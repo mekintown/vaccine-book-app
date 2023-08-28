@@ -8,7 +8,7 @@ const Banner = () => {
                 <p className="text-white">Elevate your health defenses with a simple yet powerful choice – vaccination. By getting vaccinated, you're not just shielding yourself from diseases, but also safeguarding your community. Our experts are here to ensure you receive top-notch, safe vaccinations. Act now, prioritize health, and book your vaccination.</p>
             </div>
             <div className="relative font-medium">
-                <Image src={"/img/vaccination.svg"} alt="cover" fill={true} objectFit="contain"/>
+                <Image src={"/img/vaccination.svg"} alt="cover" fill={true} className="object-contain"/>
             </div>
         </div>
     )
