@@ -1,4 +1,3 @@
-import styles from "@/components/card.module.css"
 import Image from "next/image";
 
 type Props = {
@@ -8,11 +7,13 @@ type Props = {
 
 const Card = ({imgSrc, txt} : Props) => {
     return (
-        <div className={styles.card}>
-            <div className={styles.cardImg}>
-                <Image src={imgSrc} alt="vaccination" fill={true} objectFit="cover"/>
+        <div className="grid grid-cols-3 min-h-[20vh] bg-gray-100 rounded-2xl p-4">
+            <div className="col-span-2 text-black flex justify-center flex-col">
+                <h2 className="text-2xl font-medium tracking-wide">{txt}</h2>
             </div>
-            <p>{txt}</p>
+            <div className="relative">
+                <Image src={imgSrc} alt="hospital" className="rounded-2xl" fill={true} objectFit="contain"/>
+            </div>
         </div>
     )
 }
