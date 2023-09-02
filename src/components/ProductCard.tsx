@@ -1,13 +1,14 @@
 import Image from "next/image";
+import InteractiveCard from "./InteractiveCard";
 
 interface Props {
   imgSrc: string;
   txt: string;
 }
 
-const Card = ({ imgSrc, txt }: Props) => {
+const ProductCard = ({ imgSrc, txt }: Props) => {
   return (
-    <div className="grid grid-cols-3 min-h-[20vh] bg-gray-100 rounded-2xl p-4 drop-shadow">
+    <InteractiveCard>
       <div className="col-span-2 text-black flex justify-center flex-col">
         <h2 className="text-2xl font-medium tracking-wide">{txt}</h2>
       </div>
@@ -20,8 +21,8 @@ const Card = ({ imgSrc, txt }: Props) => {
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 30vw"
         />
       </div>
-    </div>
+    </InteractiveCard>
   );
 };
 
-export default Card;
+export default ProductCard;
