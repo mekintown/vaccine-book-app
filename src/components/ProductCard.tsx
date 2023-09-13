@@ -7,16 +7,23 @@ interface Props {
   txt: string;
   ratings: Map<string, number>;
   handleRatingChange: Function;
+  handleCardClick: Function;
 }
 
-const ProductCard = ({ imgSrc, txt, ratings, handleRatingChange }: Props) => {
+const ProductCard = ({
+  imgSrc,
+  txt,
+  ratings,
+  handleRatingChange,
+  handleCardClick,
+}: Props) => {
   return (
-    <InteractiveCard>
+    <InteractiveCard handleCardClick={() => handleCardClick(txt)}>
       <div className="col-span-2 text-black flex justify-center flex-col">
         <h2 className="text-2xl font-medium tracking-wide">{txt}</h2>
         <Rating
           name="half-rating"
-          defaultValue={ratings.get(txt)}
+          value={ratings.get(txt) || 0}
           precision={0.5}
           onChange={(e, newRating) => {
             e.stopPropagation();

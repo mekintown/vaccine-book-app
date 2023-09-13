@@ -19,11 +19,10 @@ const Banner = () => {
   return (
     <div className="relative shadow-xl" onClick={() => onBannerClick()}>
       <Image
-        className="z-[-1]"
+        className="z-[-1] object-cover"
         src={coverImagesSrc[coverImgIdx]}
         alt="cover"
         fill={true}
-        objectFit="cover"
       />
       <div className="grid grid-cols-3  p-10 min-h-[70vh] gap-10">
         <div className="col-span-2 self-center flex flex-col gap-5">
