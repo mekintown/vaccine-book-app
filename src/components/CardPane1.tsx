@@ -84,7 +84,7 @@ const CardPane1 = () => {
             {Array.from(ratings).map(([name, rating]) => (
               <tr key={name}>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-black">{name}</div>
+                  <div className="text-black lg:w-60 xl:w-72">{name}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className="text-gray-600">{rating}</span>
