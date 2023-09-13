@@ -1,9 +1,8 @@
-import Card from "./Card";
 import ProductCard from "./ProductCard";
 
 const HospitalCards = () => {
   return (
-    <div className="flex items-stretch flex-col gap-4 m-4">
+    <div className="flex items-stretch flex-col gap-4 m-4 ">
       <h1 className="text-black text-center text-3xl m-8">
         Collaborate with...
       </h1>
