@@ -84,7 +84,7 @@ const CardPane1 = () => {
             {Array.from(ratings)
               .sort((a, b) => b[1] - a[1])
               .map(([name, rating]) => (
-                <tr key={name}>
+                <tr key={name} onClick={() => handleCardClick(name)}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-black lg:w-60 xl:w-72">{name}</div>
                   </td>
