@@ -81,16 +81,18 @@ const CardPane1 = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {Array.from(ratings).map(([name, rating]) => (
-              <tr key={name}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-black lg:w-60 xl:w-72">{name}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="text-gray-600">{rating}</span>
-                </td>
-              </tr>
-            ))}
+            {Array.from(ratings)
+              .sort((a, b) => b[1] - a[1])
+              .map(([name, rating]) => (
+                <tr key={name}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-black lg:w-60 xl:w-72">{name}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="text-gray-600">{rating}</span>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

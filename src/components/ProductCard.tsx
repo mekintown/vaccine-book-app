@@ -1,6 +1,7 @@
 import Image from "next/image";
 import InteractiveCard from "./InteractiveCard";
 import { Rating } from "@mui/material";
+import RatingStar from "./RatingStar";
 
 interface Props {
   imgSrc: string;
@@ -21,14 +22,10 @@ const ProductCard = ({
     <InteractiveCard handleCardClick={() => handleCardClick(txt)}>
       <div className="col-span-2 text-black flex justify-center flex-col">
         <h2 className="text-2xl font-medium tracking-wide">{txt}</h2>
-        <Rating
-          name="half-rating"
-          value={ratings.get(txt) || 0}
-          precision={0.5}
-          onChange={(e, newRating) => {
-            e.stopPropagation();
-            handleRatingChange(txt, newRating);
-          }}
+        <RatingStar
+          txt={txt}
+          ratings={ratings}
+          handleRatingChange={handleRatingChange}
         />
       </div>
       <div className="relative">
