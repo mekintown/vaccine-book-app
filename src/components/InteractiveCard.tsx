@@ -1,10 +1,9 @@
 "use client";
 interface Props {
   children: React.ReactNode;
-  handleCardClick: Function;
 }
 
-function InteractiveCard({ children, handleCardClick }: Props) {
+function InteractiveCard({ children }: Props) {
   const onCardMouseOver = (event: React.SyntheticEvent) => {
     event.currentTarget.classList.remove("shadow-lg");
     event.currentTarget.classList.add("shadow-2xl");
@@ -26,7 +25,6 @@ function InteractiveCard({ children, handleCardClick }: Props) {
       className="grid grid-cols-3 min-h-[20vh] bg-white rounded-2xl p-4 shadow-lg"
       onMouseOver={(event) => onCardMouseOver(event)}
       onMouseOut={(event) => onCardMouseOut(event)}
-      onClick={() => handleCardClick()}
     >
       {children}
     </div>

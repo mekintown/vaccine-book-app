@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Banner = () => {
   const [coverImgIdx, setCoverImgIdx] = useState(0);
+
+  const router = useRouter();
 
   const coverImagesSrc = [
     "/img/cover0.jpg",
@@ -16,15 +19,19 @@ const Banner = () => {
   const onBannerClick = () => {
     setCoverImgIdx((coverImgIdx + 1) % coverImagesSrc.length);
   };
+
   return (
-    <div className="relative shadow-xl" onClick={() => onBannerClick()}>
+    <div
+      className="relative shadow-xl h-screen flex flex-col gap-5"
+      onClick={() => onBannerClick()}
+    >
       <Image
         className="z-[-1] object-cover"
         src={coverImagesSrc[coverImgIdx]}
         alt="cover"
         fill={true}
       />
-      <div className="grid grid-cols-3  p-10 min-h-[70vh] gap-10">
+      <div className="grid grid-cols-3  p-10 h-[80%] gap-10">
         <div className="col-span-2 self-center flex flex-col gap-5">
           <h1 className="font-bold text-6xl text-white tracking-wide">
             Protect Yourself and Others – Get Vaccinated Today!
@@ -46,6 +53,15 @@ const Banner = () => {
           />
         </div>
       </div>
+      <button
+        className="text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-10 py-4 text-center mr-2 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 self-center"
+        onClick={(e) => {
+          e.stopPropagation();
+          router.push("/hospital");
+        }}
+      >
+        Hospital
+      </button>
     </div>
   );
 };

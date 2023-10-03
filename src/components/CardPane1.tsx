@@ -3,6 +3,7 @@
 import { useReducer } from "react";
 import ProductCard from "./ProductCard";
 import { RatingsAction } from "@/types";
+import Link from "next/link";
 
 const CardPane1 = () => {
   const ratingsReducer = (
@@ -33,6 +34,23 @@ const CardPane1 = () => {
 
   const [ratings, dispatchRating] = useReducer(ratingsReducer, initialRatings);
 
+  const mockHospitalRepo = [
+    {
+      hid: "001",
+      txt: "Chulalongkorn Hospital",
+      imgSrc: "/img/chulalongkornHospital.png",
+    },
+    {
+      hid: "002",
+      txt: "Rajavithi Hospital",
+      imgSrc: "/img/rajavithiHospital.png",
+    },
+    {
+      hid: "003",
+      txt: "Thammasat University Hospital",
+      imgSrc: "/img/thammasatUniversityHospital.png",
+    },
+  ];
   const handleRatingChange = (txt: string, newRating: number) => {
     dispatchRating({ type: "SET", payload: { name: txt, rating: newRating } });
   };
@@ -46,27 +64,17 @@ const CardPane1 = () => {
       <h1 className="text-black text-center text-3xl m-8">
         Collaborate with...
       </h1>
-      <ProductCard
-        imgSrc="/img/chulalongkornHospital.png"
-        txt="Chulalongkorn Hospital"
-        ratings={ratings}
-        handleRatingChange={handleRatingChange}
-        handleCardClick={handleCardClick}
-      />
-      <ProductCard
-        imgSrc="/img/rajavithiHospital.png"
-        txt="Rajavithi Hospital"
-        ratings={ratings}
-        handleRatingChange={handleRatingChange}
-        handleCardClick={handleCardClick}
-      />
-      <ProductCard
-        imgSrc="/img/thammasatUniversityHospital.png"
-        txt="Thammasat University Hospital"
-        ratings={ratings}
-        handleRatingChange={handleRatingChange}
-        handleCardClick={handleCardClick}
-      />
+      {mockHospitalRepo.map((hospital) => (
+        <Link href={`/hospital/${hospital.hid}`}>
+          <ProductCard
+            key={hospital.hid}
+            txt={hospital.txt}
+            imgSrc={hospital.imgSrc}
+            ratings={ratings}
+            handleRatingChange={handleRatingChange}
+          />
+        </Link>
+      ))}
       <div className="border-t pt-4">
         <h2 className="text-xl font-semibold mb-2">Hospital Ratings:</h2>
         <table className="min-w-full divide-y divide-gray-200">
