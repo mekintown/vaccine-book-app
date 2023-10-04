@@ -22,7 +22,7 @@ const Banner = () => {
 
   return (
     <div
-      className="relative shadow-xl h-screen flex flex-col gap-5"
+      className="relative shadow-xl h-[90vh] flex flex-col gap-5"
       onClick={() => onBannerClick()}
     >
       <Image
