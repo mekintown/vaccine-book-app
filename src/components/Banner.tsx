@@ -22,7 +22,6 @@ const Banner = () => {
   };
 
   const { data: session } = useSession();
-  console.log(session?.user.token);
   return (
     <div
       className="relative shadow-xl h-[90vh] flex flex-col gap-5"
