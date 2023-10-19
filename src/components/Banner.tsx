@@ -1,5 +1,6 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -20,6 +21,8 @@ const Banner = () => {
     setCoverImgIdx((coverImgIdx + 1) % coverImagesSrc.length);
   };
 
+  const { data: session } = useSession();
+  console.log(session?.user.token);
   return (
     <div
       className="relative shadow-xl h-[90vh] flex flex-col gap-5"
@@ -31,6 +34,13 @@ const Banner = () => {
         alt="cover"
         fill={true}
       />
+      {session ? (
+        <div className="text-white absolute right-0 text-2xl m-5">
+          Hello {session.user?.name}{" "}
+        </div>
+      ) : (
+        ""
+      )}
       <div className="grid grid-cols-3  p-10 h-[80%] gap-10">
         <div className="col-span-2 self-center flex flex-col gap-5">
           <h1 className="font-bold text-6xl text-white tracking-wide">
