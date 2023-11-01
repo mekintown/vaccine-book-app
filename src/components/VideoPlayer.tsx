@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const VideoPlayer = ({
   vdoSrc,
@@ -11,6 +11,12 @@ const VideoPlayer = ({
 }) => {
   const vdoRef = useRef<HTMLVideoElement>(null);
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   useEffect(() => {
     if (isPlaying) {
       vdoRef.current?.play();
@@ -19,7 +25,13 @@ const VideoPlayer = ({
     }
   }, [isPlaying]);
   return (
-    <video className="w-[25%]" src={vdoSrc} ref={vdoRef} muted loop controls />
+    <div className="w-[25%]">
+      {isClient ? (
+        <video className="w-[100%]" src={vdoSrc} muted loop controls />
+      ) : (
+        ""
+      )}
+    </div>
   );
 };
 
