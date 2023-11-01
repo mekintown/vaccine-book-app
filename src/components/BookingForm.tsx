@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { BookingItem } from "../../interfaces";
 import { addReservation } from "@/redux/features/bookSlice";
+import { useRouter } from "next/navigation";
 
 export default function BookingForm() {
   const [firstName, setFirstName] = useState("");
@@ -15,6 +16,7 @@ export default function BookingForm() {
   const [hospital, setHospital] = useState("chulalongkorn");
 
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
 
   const makeReservation = () => {
     if (firstName && lastName && id && reserveDate) {
@@ -26,6 +28,7 @@ export default function BookingForm() {
         hospital: hospital,
       };
       dispatch(addReservation(booking));
+      router.push("/mybooking");
     }
   };
 
