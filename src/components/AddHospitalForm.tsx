@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 export default function AddHospitalForm() {
   const addHospital = async (addHospitalForm: FormData) => {
     "use server";
+    console.log("Yeah");
     const name = addHospitalForm.get("name");
     const address = addHospitalForm.get("address");
     const district = addHospitalForm.get("district");
@@ -16,6 +17,7 @@ export default function AddHospitalForm() {
 
     try {
       await dbConnect();
+      debugger;
       const hospital = await Hospital.create({
         name,
         address,
