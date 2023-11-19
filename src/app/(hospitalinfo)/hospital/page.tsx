@@ -10,9 +10,11 @@ import { Suspense } from "react";
 
 async function Hospital() {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user.token) return null;
 
-  const profile = await getUserProfile(session.user.token);
+  let profile = null;
+  if (session && session.user.token) {
+    profile = await getUserProfile(session.user.token);
+  }
 
   const hospitals = getHospitals();
   return (
@@ -26,7 +28,7 @@ async function Hospital() {
         }
       >
         <HospitalCatalog hospitalJson={hospitals} />
-        {profile.data.role === "admin" ? (
+        {profile && profile.data.role === "admin" ? (
           <div className="border-t border-gray-900/10 mx-4 my-8 p-4  bg-white">
             <AddHospitalForm />
           </div>

@@ -11,12 +11,6 @@ const VideoPlayer = ({
 }) => {
   const vdoRef = useRef<HTMLVideoElement>(null);
 
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   useEffect(() => {
     if (isPlaying) {
       vdoRef.current?.play();
@@ -26,11 +20,14 @@ const VideoPlayer = ({
   }, [isPlaying]);
   return (
     <div className="w-[25%]">
-      {isClient ? (
-        <video className="w-[100%]" src={vdoSrc} muted loop controls />
-      ) : (
-        ""
-      )}
+      <video
+        className="w-[100%]"
+        src={vdoSrc}
+        ref={vdoRef}
+        muted
+        loop
+        controls
+      />
     </div>
   );
 };
